@@ -44,8 +44,8 @@ app.get('/api/extranet/search', (req, res) => {
 });
 
 app.get('/api/extranet/shares', (req, res) => {
-  const shares = _.range(number(20)).map(() => ({
-    id: uuid(),
+  const shares = _.range(number(20)).map((_, index) => ({
+    id: index,
     cover: image(),
     title: words(),
     persons: ['分享人'],
@@ -108,10 +108,10 @@ app.delete('/api/shars/:id/evaluations/:id', (req, res) => {
 });
 
 app.get('/api/extranet/lessons/mobile', (req, res) => {
-  const lessons = _.range(number(20)).map(() => ({
-    id: faker.random.uuid(),
-    cover: faker.random.image(),
-    title: faker.random.words(),
+  const lessons = _.range(number(20)).map((_, index) => ({
+    id: index,
+    cover: image(),
+    title: words(),
     persons: ['分享人']
   }));
   res.send({ code: 0, lessons, total: 50 });
@@ -120,8 +120,8 @@ app.get('/api/extranet/lessons/mobile', (req, res) => {
 app.get('/api/open-courses/types', (req, res) => {
   const rootLessonType = {
     id: uuid(),
-    children: range(number(5)).map(() => ({
-      id: number(20),
+    children: range(number(5)).map((_, index) => ({
+      id: index,
       label: word(),
       lessonCount: number(),
       children: range(number(10)).map(() => ({
@@ -173,8 +173,8 @@ app.get('/api/extranet/userinifo', (req, res) => {
 });
 
 app.get('/api/extranet/user/collections', (req, res) => {
-  const collections = _.range(number(20)).map(() => ({
-    id: faker.random.uuid(),
+  const collections = _.range(number(20)).map((_, index) => ({
+    id: index,
     cover: faker.random.image(),
     title: faker.random.words(),
     persons: ['分享人'],
@@ -188,8 +188,8 @@ app.get('/api/extranet/user/collections', (req, res) => {
 });
 
 app.get('/api/extranet/user/lessons', (req, res) => {
-  const lessonsInCampOrTrain = _.range(number(20)).map(() => ({
-    guid: uuid(),
+  const lessonsInCampOrTrain = _.range(number(20)).map((_, index) => ({
+    guid: index,
     brief: words(),
     cover: image(),
     endTime: date.future(),
